@@ -3,18 +3,20 @@ package hw3;
 import java.util.Arrays;
 
 public class Sorter implements GodricsHat {
+    // LAWRENCE
     public void insertion(int[] array) {
         Arrays.sort(array);
     }
-
+    // Samantha
     public void merge(int[] array) { // use recursion only
         Arrays.sort(array);
     }
 
+    //  LAWRENCE 
     public void quick(int[] array, int p, int r) { // use recursion only
         Arrays.sort(array);
     }
-
+    // Samantha
     public void quickLoopy(int[] array) {
         Arrays.sort(array);
     }
