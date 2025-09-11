@@ -18,7 +18,17 @@ public class Sorter implements GodricsHat {
     }
     // Samantha
     public void quickLoopy(int[] array) {
-        Arrays.sort(array);
+        // Arrays.sort(array);
+///////////////////NOT WORKING YET/////////////////////
+        // int pivot = array[array.length / 2];
+
+        // int i = -1;
+        // pivot = loop(array, i, pivot); 
+        
+
+
+
+        
     }
 
     public void counting(int[] array) {
@@ -31,6 +41,25 @@ public class Sorter implements GodricsHat {
         for (i = 0; i < counts.length; i++)
             for (j = 0; j < counts[i]; j++)
                 array[k++] = i;
+    }
+
+    public static void swap(int[] array, int i, int j) {
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp; 
+    }
+
+    public int loop(int[] array, int i, int pivot) {
+        for (int j = 0; j < pivot; j++) {
+                if (array[j] < array[pivot]) {
+                    i++;
+                    
+                    swap(array, i, j);
+                } else {
+                    swap(array, pivot, i + 1);
+                }
+            }
+        return i + 1;
     }
 
 }
