@@ -3,32 +3,40 @@ package hw3;
 import java.util.Arrays;
 
 public class Sorter implements GodricsHat {
-    // LAWRENCE
     public void insertion(int[] array) {
         Arrays.sort(array);
     }
-    // Samantha
+
     public void merge(int[] array) { // use recursion only
-        Arrays.sort(array);
+        int halfLength = array.length / 2;
+        if (array.length == 1) {
+
+        } else if (array.length > 1) {
+            for (int i = 0; i < array.length; i++) {
+                if (i < halfLength) {
+                    int[] subArray1 = array[i];
+                } else {
+                    int[] subArray2 = array[i];
+                }
+            }
+        }
     }
 
-    //  LAWRENCE 
     public void quick(int[] array, int p, int r) { // use recursion only
         Arrays.sort(array);
     }
-    // Samantha
+
     public void quickLoopy(int[] array) {
-        // Arrays.sort(array);
+        Arrays.sort(array);
+
+
+
+
 ///////////////////NOT WORKING YET/////////////////////
         // int pivot = array[array.length / 2];
 
         // int i = -1;
         // pivot = loop(array, i, pivot); 
-        
-
-
-
-        
     }
 
     public void counting(int[] array) {
