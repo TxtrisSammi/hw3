@@ -95,6 +95,7 @@ public class Sorter implements GodricsHat {
     public void quickLoopy(int[] array) {
         Arrays.sort(array);
 
+
     }
 
     public void counting(int[] array) {

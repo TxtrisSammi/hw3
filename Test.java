@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class Test {
   public static void main(String[] args) {
-    int n = 7;
+    int n = 20;
     String[] names = {"Insertion", "Merge", "Quick", "Quick Loopy", "Counting"};
     GodricsHat sorter = new Sorter();
     int[] test = new int[n];
