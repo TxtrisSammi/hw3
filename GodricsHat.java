@@ -1,4 +1,3 @@
-package hw3;
 public interface GodricsHat {
     void insertion(int[] array);
 

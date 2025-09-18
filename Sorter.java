@@ -1,5 +1,3 @@
-package hw3;
-
 import java.util.Arrays;
 
 public class Sorter implements GodricsHat {
@@ -8,18 +6,73 @@ public class Sorter implements GodricsHat {
     }
 
     public void merge(int[] array) { // use recursion only
-        int halfLength = array.length / 2;
-        if (array.length == 1) {
+        if (array.length < 2) {
+            return;
+        }
+        int halfArr = array.length / 2;
+        // Split arrays into smaller arrays
+        int[] left = new int[halfArr];
+        int[] right = new int[array.length - halfArr];
+        for (int i = 0; i < halfArr; i++) {
+            left[i] = array[i];
+        }
+        for (int i = halfArr; i < array.length; i++) {
+            right[i - halfArr] = array[i];
+        }
 
-        } else if (array.length > 1) {
-            for (int i = 0; i < array.length; i++) {
-                if (i < halfLength) {
-                    int[] subArray1 = array[i];
-                } else {
-                    int[] subArray2 = array[i];
-                }
+        // Recursive call to split split arrays into even more split arrays
+        merge(left);
+        merge(right);
+
+        // counters for each array
+        int i = 0;
+        int j = 0;
+        int k = 0;
+
+        // while the left and right arrays still have remaining indexes, check which
+        // contains the higher value at their index
+        // grab the higher number write it to the main array at it's current index.
+        while (i < left.length && j < right.length) {
+            if (left[i] < right[j]) {
+                array[k] = left[i];
+                i++;
+                k++;
+            } else {
+                array[k] = right[j];
+                j++;
+                k++;
             }
         }
+
+        // When either left[] or right[] run out of indexes fill the remainder of
+        // array[] with whichever array still has indexes left
+        while (i < left.length) {
+            array[k] = left[i];
+            i++;
+            k++;
+        }
+        while (j < right.length) {
+            array[k] = right[j];
+            j++;
+            k++;
+        }
+
+        // if (left[0] < right[0]) {
+        // for (int i = 0; i < left.length; i++) {
+        // array[i] = left[i];
+        // }
+        // for (int i = 0; i < right.length; i++) {
+        // array[i + left.length] = right[i];
+        // }
+        // } else {
+        // for (int i = 0; i < right.length; i++) {
+        // array[i] = right[i];
+        // }
+        // for (int i = 0; i < left.length; i++) {
+        // array[i + right.length] = left[i];
+        // }
+        // }
+
     }
 
     public void quick(int[] array, int p, int r) { // use recursion only
@@ -29,14 +82,11 @@ public class Sorter implements GodricsHat {
     public void quickLoopy(int[] array) {
         Arrays.sort(array);
 
-
-
-
-///////////////////NOT WORKING YET/////////////////////
+        ///////////////////NOT WORKING YET/////////////////////
         // int pivot = array[array.length / 2];
 
         // int i = -1;
-        // pivot = loop(array, i, pivot); 
+        // pivot = loop(array, i, pivot);
     }
 
     public void counting(int[] array) {
@@ -54,19 +104,19 @@ public class Sorter implements GodricsHat {
     public static void swap(int[] array, int i, int j) {
         int temp = array[i];
         array[i] = array[j];
-        array[j] = temp; 
+        array[j] = temp;
     }
 
     public int loop(int[] array, int i, int pivot) {
         for (int j = 0; j < pivot; j++) {
-                if (array[j] < array[pivot]) {
-                    i++;
-                    
-                    swap(array, i, j);
-                } else {
-                    swap(array, pivot, i + 1);
-                }
+            if (array[j] < array[pivot]) {
+                i++;
+
+                swap(array, i, j);
+            } else {
+                swap(array, pivot, i + 1);
             }
+        }
         return i + 1;
     }
 

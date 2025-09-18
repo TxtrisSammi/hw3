@@ -1,4 +1,3 @@
-package hw3;
 import java.util.Arrays;
 
 public class Test {
