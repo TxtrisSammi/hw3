@@ -18,59 +18,58 @@ public class Sorter implements GodricsHat {
     public void merge(int[] array) { // use recursion only
         if (array.length > 1) {
             int halfArr = array.length / 2;
-        // Split arrays into smaller arrays
-        int[] left = new int[halfArr];
-        int[] right = new int[array.length - halfArr];
-        for (int i = 0; i < halfArr; i++) {
-            left[i] = array[i];
-        }
-        for (int i = halfArr; i < array.length; i++) {
-            right[i - halfArr] = array[i];
-        }
+            // Split arrays into smaller arrays
+            int[] left = new int[halfArr];
+            int[] right = new int[array.length - halfArr];
+            for (int i = 0; i < halfArr; i++) {
+                left[i] = array[i];
+            }
+            for (int i = halfArr; i < array.length; i++) {
+                right[i - halfArr] = array[i];
+            }
 
-        // Recursive call to split split arrays into even more split arrays
-        merge(left);
-        merge(right);
+            // Recursive call to split split arrays into even more split arrays
+            merge(left);
+            merge(right);
 
-        // counters for each array
-        int i = 0;
-        int j = 0;
-        int k = 0;
+            // counters for each array
+            int i = 0;
+            int j = 0;
+            int k = 0;
 
-        // while the left and right arrays still have remaining indexes, check which
-        // contains the higher value at their index
-        // grab the higher number write it to the main array at it's current index.
-        while (i < left.length && j < right.length) {
-            if (left[i] < right[j]) {
+            // while the left and right arrays still have remaining indexes, check which
+            // contains the higher value at their index
+            // grab the higher number write it to the main array at it's current index.
+            while (i < left.length && j < right.length) {
+                if (left[i] < right[j]) {
+                    array[k] = left[i];
+                    i++;
+                    k++;
+                } else {
+                    array[k] = right[j];
+                    j++;
+                    k++;
+                }
+            }
+
+            // When either left[] or right[] run out of indexes fill the remainder of
+            // array[] with whichever array still has indexes left
+            while (i < left.length) {
                 array[k] = left[i];
                 i++;
                 k++;
-            } else {
+            }
+            while (j < right.length) {
                 array[k] = right[j];
                 j++;
                 k++;
             }
         }
 
-        // When either left[] or right[] run out of indexes fill the remainder of
-        // array[] with whichever array still has indexes left
-        while (i < left.length) {
-            array[k] = left[i];
-            i++;
-            k++;
-        }
-        while (j < right.length) {
-            array[k] = right[j];
-            j++;
-            k++;
-        }
-        }
-        
     }
 
     public void quick(int[] array, int p, int r) { // use recursion only
         if (p < r) {
-
             // Partition algorithm
             int x = array[r];
             int i = p - 1;
@@ -86,7 +85,6 @@ public class Sorter implements GodricsHat {
             array[i + 1] = array[r];
             array[r] = temp;
             int q = i + 1;
-            // end Partition algorithim
 
             quick(array, p, q - 1);
             quick(array, q + 1, r);
