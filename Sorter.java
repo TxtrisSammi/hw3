@@ -2,7 +2,17 @@ import java.util.Arrays;
 
 public class Sorter implements GodricsHat {
     public void insertion(int[] array) {
-        Arrays.sort(array);
+        for (int i = 1; i < array.length; i++) {
+            int k = array[i];
+            int j = i - 1;
+
+            while (j >= 0 && array[j] > k) {
+                array[j + 1] = array[j];
+                j--;
+            }
+
+            array[j + 1] = k;
+        }
     }
 
     public void merge(int[] array) { // use recursion only
@@ -56,23 +66,6 @@ public class Sorter implements GodricsHat {
             j++;
             k++;
         }
-
-        // if (left[0] < right[0]) {
-        // for (int i = 0; i < left.length; i++) {
-        // array[i] = left[i];
-        // }
-        // for (int i = 0; i < right.length; i++) {
-        // array[i + left.length] = right[i];
-        // }
-        // } else {
-        // for (int i = 0; i < right.length; i++) {
-        // array[i] = right[i];
-        // }
-        // for (int i = 0; i < left.length; i++) {
-        // array[i + right.length] = left[i];
-        // }
-        // }
-
     }
 
     public void quick(int[] array, int p, int r) { // use recursion only
