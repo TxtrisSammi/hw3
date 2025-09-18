@@ -16,10 +16,8 @@ public class Sorter implements GodricsHat {
     }
 
     public void merge(int[] array) { // use recursion only
-        if (array.length < 2) {
-            return;
-        }
-        int halfArr = array.length / 2;
+        if (array.length > 1) {
+            int halfArr = array.length / 2;
         // Split arrays into smaller arrays
         int[] left = new int[halfArr];
         int[] right = new int[array.length - halfArr];
@@ -66,20 +64,39 @@ public class Sorter implements GodricsHat {
             j++;
             k++;
         }
+        }
+        
     }
 
     public void quick(int[] array, int p, int r) { // use recursion only
-        Arrays.sort(array);
+        if (p < r) {
+
+            // Partition algorithm
+            int x = array[r];
+            int i = p - 1;
+            for (int j = p; j < r; j++) {
+                if (array[j] <= x) {
+                    i++;
+                    int temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+            }
+            int temp = array[i + 1];
+            array[i + 1] = array[r];
+            array[r] = temp;
+            int q = i + 1;
+            // end Partition algorithim
+
+            quick(array, p, q - 1);
+            quick(array, q + 1, r);
+        }
+
     }
 
     public void quickLoopy(int[] array) {
         Arrays.sort(array);
 
-        ///////////////////NOT WORKING YET/////////////////////
-        // int pivot = array[array.length / 2];
-
-        // int i = -1;
-        // pivot = loop(array, i, pivot);
     }
 
     public void counting(int[] array) {
@@ -92,25 +109,6 @@ public class Sorter implements GodricsHat {
         for (i = 0; i < counts.length; i++)
             for (j = 0; j < counts[i]; j++)
                 array[k++] = i;
-    }
-
-    public static void swap(int[] array, int i, int j) {
-        int temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
-
-    public int loop(int[] array, int i, int pivot) {
-        for (int j = 0; j < pivot; j++) {
-            if (array[j] < array[pivot]) {
-                i++;
-
-                swap(array, i, j);
-            } else {
-                swap(array, pivot, i + 1);
-            }
-        }
-        return i + 1;
     }
 
 }
